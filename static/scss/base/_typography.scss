@@ -1,0 +1,75 @@
+// _typography.scss - Typography system
+
+// Headings
+h1, h2, h3, h4, h5, h6 {
+    font-family: $font-family-heading;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: $spacing-md;
+    color: $primary-color;
+}
+
+h1 {
+    font-size: $font-size-4xl;
+
+    @include respond-to(md) {
+        font-size: $font-size-4xl * 1.2;
+    }
+}
+
+h2 {
+    font-size: $font-size-3xl;
+}
+
+h3 {
+    font-size: $font-size-2xl;
+}
+
+h4 {
+    font-size: $font-size-xl;
+}
+
+h5 {
+    font-size: $font-size-lg;
+}
+
+h6 {
+    font-size: $font-size-base;
+}
+
+// Paragraphs
+p {
+    margin-bottom: $spacing-md;
+    line-height: 1.7;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+// Links
+a {
+    color: $secondary-color;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: darken($secondary-color, 15%);
+    }
+}
+
+// Text utilities
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.text-primary { color: $primary-color; }
+.text-secondary { color: $secondary-color; }
+.text-accent { color: $accent-color; }
+.text-success { color: $success-color; }
+.text-warning { color: $warning-color; }
+.text-danger { color: $danger-color; }
+
+.font-light { font-weight: 300; }
+.font-normal { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-bold { font-weight: 700; }

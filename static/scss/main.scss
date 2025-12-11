@@ -1,0 +1,249 @@
+// static/scss/main.scss
+
+// VARIABLES
+$primary-color: #2c3e50;
+$secondary-color: #3498db;
+$accent-color: #e74c3c;
+$light-gray: #f5f5f5;
+$white: #ffffff;
+$black: #333333;
+
+$font-family-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+$font-family-heading: 'Arial', sans-serif;
+
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+$spacing-2xl: 4rem; // [FIX] Ditambahkan karena dipakai di mobile menu
+
+$border-radius-md: 8px;
+$border-radius-lg: 12px;
+
+$shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+$shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+
+$container-xl: 1200px;
+$breakpoint-md: 768px;
+
+// MIXINS
+@mixin container {
+    max-width: $container-xl;
+    margin: 0 auto;
+    padding: 0 $spacing-md;
+
+    @media (min-width: $breakpoint-md) {
+        padding: 0 $spacing-lg;
+    }
+}
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// BASE STYLES
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: $font-family-base;
+    line-height: 1.6;
+    color: $black;
+    background-color: $light-gray;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+// HEADER
+.header {
+    background-color: $primary-color;
+    color: $white;
+    padding: $spacing-md 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: $shadow-md;
+
+    .container {
+        @include container;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: $white;
+        text-decoration: none;
+
+        &:hover {
+            color: $secondary-color;
+        }
+    }
+}
+
+// NAVIGATION (Base Styles)
+.nav {
+    &__list {
+        display: flex;
+        gap: $spacing-lg;
+        list-style: none;
+    }
+
+    &__link {
+        color: $white;
+        font-weight: 500;
+        padding: $spacing-sm $spacing-md;
+        border-radius: $border-radius-md;
+        text-decoration: none;
+        transition: all 0.3s ease;
+
+        &:hover, &.active {
+            background-color: rgba($white, 0.1);
+            color: $secondary-color;
+        }
+    }
+}
+
+// NAV TOGGLE (Default Hidden on Desktop)
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: $white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: $spacing-sm;
+    z-index: 1001; // Harus lebih tinggi dari nav menu
+
+    &:focus {
+        outline: 2px solid $secondary-color;
+        outline-offset: 2px;
+    }
+}
+
+// OVERLAY (Default Hidden)
+.nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+
+    &.active {
+        display: block;
+    }
+}
+
+// MAIN CONTENT
+.main {
+    flex: 1;
+    padding: $spacing-xl 0;
+
+    .container {
+        @include container;
+    }
+}
+
+.content {
+    background: $white;
+    padding: $spacing-xl;
+    border-radius: $border-radius-lg;
+    box-shadow: $shadow-sm;
+
+    h1 {
+        color: $primary-color;
+        margin-bottom: $spacing-lg;
+        font-size: 2rem;
+    }
+
+    p {
+        margin-bottom: $spacing-md;
+        line-height: 1.7;
+    }
+}
+
+// FOOTER
+.footer {
+    background-color: $primary-color;
+    color: $white;
+    padding: $spacing-xl 0;
+    margin-top: auto;
+
+    .container {
+        @include container;
+        text-align: center;
+    }
+
+    &__copyright {
+        padding-top: $spacing-xl;
+        margin-top: $spacing-xl;
+        border-top: 1px solid rgba($white, 0.1);
+        color: rgba($white, 0.7);
+        font-size: 0.875rem;
+    }
+}
+
+// =========================================
+// RESPONSIVE DESIGN (MOBILE)
+// =========================================
+@media (max-width: $breakpoint-md) {
+    // Tampilkan tombol hamburger di mobile
+    .nav-toggle {
+        display: block;
+    }
+
+    // Ubah Nav menjadi Sidebar/Drawer
+    .nav {
+        position: fixed;
+        top: 0;
+        right: -100%; // Sembunyi di kanan
+        width: 250px;
+        height: 100vh;
+        background: $primary-color;
+        padding: $spacing-xl;
+        transition: right 0.3s ease-in-out;
+        z-index: 1000;
+        box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+
+        &.active {
+            right: 0; // Muncul
+        }
+
+        &__list {
+            flex-direction: column;
+            gap: $spacing-lg;
+            margin-top: $spacing-2xl; // Menggunakan variabel baru
+        }
+
+        &__link {
+            display: block;
+            padding: $spacing-md;
+            border-radius: $border-radius-md;
+            font-size: 1.1rem;
+
+            &:hover, &.active {
+                background-color: rgba($white, 0.15);
+                transform: translateX(5px);
+            }
+        }
+    }
+
+    .content {
+        padding: $spacing-lg;
+    }
+}

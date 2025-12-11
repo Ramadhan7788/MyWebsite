@@ -1,0 +1,72 @@
+// _mixins.scss - Reusable mixins
+
+// Media Query Mixin
+@mixin respond-to($breakpoint) {
+    @if $breakpoint == xs {
+        @media (min-width: $breakpoint-xs) { @content; }
+    } @else if $breakpoint == sm {
+        @media (min-width: $breakpoint-sm) { @content; }
+    } @else if $breakpoint == md {
+        @media (min-width: $breakpoint-md) { @content; }
+    } @else if $breakpoint == lg {
+        @media (min-width: $breakpoint-lg) { @content; }
+    } @else if $breakpoint == xl {
+        @media (min-width: $breakpoint-xl) { @content; }
+    } @else if $breakpoint == 2xl {
+        @media (min-width: $breakpoint-2xl) { @content; }
+    }
+}
+
+// Flexbox Mixin
+@mixin flex-center($direction: row) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: center;
+    align-items: center;
+}
+
+// Container Mixin
+@mixin container($max-width: $container-xl) {
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: 0 $spacing-md;
+
+    @include respond-to(lg) {
+        padding: 0 $spacing-lg;
+    }
+}
+
+// Button Mixin
+@mixin button-base {
+    display: inline-block;
+    padding: $spacing-sm $spacing-lg;
+    border: none;
+    border-radius: $border-radius-md;
+    font-size: $font-size-base;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: $shadow-md;
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+}
+
+// Card Mixin
+@mixin card-base {
+    background: $white;
+    border-radius: $border-radius-lg;
+    box-shadow: $shadow-sm;
+    padding: $spacing-lg;
+    transition: box-shadow 0.3s ease;
+
+    &:hover {
+        box-shadow: $shadow-md;
+    }
+}

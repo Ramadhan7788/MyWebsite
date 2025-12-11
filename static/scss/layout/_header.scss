@@ -1,0 +1,30 @@
+// _header.scss - Header styles dengan @use
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.header {
+    background-color: $primary-color;
+    color: $white;
+    padding: $spacing-md 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: $shadow-md;
+
+    .container {
+        @include container();
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: $font-size-2xl;
+        font-weight: 700;
+        color: $white;
+
+        &:hover {
+            color: $secondary-color;
+        }
+    }
+}
