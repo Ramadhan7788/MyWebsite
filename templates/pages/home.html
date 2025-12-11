@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="content">
+    <h1>{{ page_title }}</h1>
+    <p>{{ content }}</p>
+    
+    <div style="margin-top: 2rem;">
+        <h3>Fitur Utama:</h3>
+        <ul>
+            <li>Halaman statis responsive</li>
+            <li>Template Django dengan inheritance</li>
+            <li>Struktur project yang terorganisir</li>
+            <li>Siap untuk integrasi CSS/SASS (Level 2)</li>
+        </ul>
+    </div>
+    
+    <div style="margin-top: 2rem; padding: 1rem; background: #e8f4fc; border-radius: 4px;">
+        <h4>Teknologi yang digunakan:</h4>
+        <p>Python Django 6.0 | Git | GitHub | Windows | PyCharm</p>
+    </div>
+</div>
+{% endblock %}

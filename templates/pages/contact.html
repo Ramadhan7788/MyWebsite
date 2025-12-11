@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block content %}
+<div class="content">
+    <h1>{{ page_title }}</h1>
+    <p>{{ content }}</p>
+    
+    <div class="contact-info">
+        <h3>Informasi Kontak:</h3>
+        <p><strong>Email:</strong> {{ email }}</p>
+        <p><strong>Telepon:</strong> {{ phone }}</p>
+        <p><strong>Alamat:</strong> Jl. Contoh No. 123, Jakarta, Indonesia</p>
+    </div>
+    
+    <div style="margin-top: 2rem;">
+        <h3>Form Kontak (Coming Soon):</h3>
+        <p>Form kontak akan diimplementasikan di level berikutnya.</p>
+        <!-- Form akan ditambahkan nanti -->
+    </div>
+</div>
+{% endblock %}
